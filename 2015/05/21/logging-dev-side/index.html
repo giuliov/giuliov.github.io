@@ -1,0 +1,121 @@
+<!doctype html><html lang=en><meta charset=utf-8><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/blog.casavian.eu\/"},"articleSection":"post","name":"Logging (Developer side)","headline":"Logging (Developer side)","description":"Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia.","inLanguage":"en","author":"Giulio Vian","creator":"Giulio Vian","publisher":"Giulio Vian","accountablePerson":"Giulio Vian","copyrightHolder":"Giulio Vian","copyrightYear":"2015","datePublished":"2015-05-21T00:00:00Z","dateModified":"2015-05-21T00:00:00Z","url":"\/2015\/05\/21\/logging-dev-side\/","wordCount":"734","keywords":["Development","Design Patterns","Logging","Monitoring","Blog"]}</script><title>Logging (Developer side) &ndash; Giulio Vian's Blog!</title><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content="Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia."><meta name=author content="Giulio Vian"><link rel=icon href=/favicon.ico><meta itemprop=name content="Logging (Developer side)"><meta itemprop=description content="I wrote lot of code in my life, and I discovered some patterns that can be useful to other people, so let&rsquo;s share and discuss. More than design patterns, they are ways of applying classical Gang of Four Design Patterns &nbsp;  in specific contexts.
+Today, I will start discussing writing logging and monitoring code, and you will see why I take these two together. The code examples use the C# language, but the ideas can be equally applied to C++, Java, Go or any other object oriented language with an interface feature that decouples implementation from definition."><meta itemprop=datePublished content="2015-05-21T00:00:00+00:00"><meta itemprop=dateModified content="2015-05-21T00:00:00+00:00"><meta itemprop=wordCount content="734"><meta itemprop=keywords content="Development,Design Patterns,Logging,Monitoring,"><meta property="og:title" content="Logging (Developer side)"><meta property="og:description" content="I wrote lot of code in my life, and I discovered some patterns that can be useful to other people, so let&rsquo;s share and discuss. More than design patterns, they are ways of applying classical Gang of Four Design Patterns &nbsp;  in specific contexts.
+Today, I will start discussing writing logging and monitoring code, and you will see why I take these two together. The code examples use the C# language, but the ideas can be equally applied to C++, Java, Go or any other object oriented language with an interface feature that decouples implementation from definition."><meta property="og:type" content="article"><meta property="og:url" content="http://blog.casavian.eu/2015/05/21/logging-dev-side/"><meta property="article:published_time" content="2015-05-21T00:00:00+00:00"><meta property="article:modified_time" content="2015-05-21T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Logging (Developer side)"><meta name=twitter:description content="I wrote lot of code in my life, and I discovered some patterns that can be useful to other people, so let&rsquo;s share and discuss. More than design patterns, they are ways of applying classical Gang of Four Design Patterns &nbsp;  in specific contexts.
+Today, I will start discussing writing logging and monitoring code, and you will see why I take these two together. The code examples use the C# language, but the ideas can be equally applied to C++, Java, Go or any other object oriented language with an interface feature that decouples implementation from definition."><meta name=twitter:site content="@giulio_vian"><link rel=alternate href=/index.xml type=application/rss+xml title="Giulio Vian's Blog!"><link rel=stylesheet href=/css/vendor.min.95b0b4c4607aec507f0fc9d9c36a12a4613ccac06f9423caa43e265cb58eb5f90709388cc0fa166ac3ca836b4163e6d0569b8b86065d9cabdf223c5ea9a63b08.css integrity="sha512-lbC0xGB67FB/D8nZw2oSpGE8ysBvlCPKpD4mXLWOtfkHCTiMwPoWasPKg2tBY+bQVpuLhgZdnKvfIjxeqaY7CA=="><link href=http://blog.casavian.eu/css/cookieconsent.min.cd0d0b6e50ff01ff2f3a9a70d7cfb66a7c6cb9acf7a566325568be6d3bd31fc4.css rel=stylesheet type=text/css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous><script src=http://blog.casavian.eu/js/cookieconsent.min.e55842a856a6d829feca3c3ad736c136b6c7549e9247274f78aa296259e06e24.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous async></script><script>window.addEventListener("load",function(){window.cookieconsent.initialise({"palette":{"popup":{"background":"#428bca","text":"#ffffff"},"button":{"background":"#f71559"}},"content":{"message":'This website uses cookies.',"dismiss":'Got it!',"link":'Learn more.',"href":"http:\/\/blog.casavian.eu\/page\/privacy-cookies-policy\/"},"position":"bottom-right"})});</script><body><nav class="navbar navbar-light bg-white navbar-expand-lg border-bottom"><div class=container><a class="navbar-brand text-primary" href=/>Giulio Vian's Blog!</a>
+<button class="navbar-toggler collapsed" type=button data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"><li class=nav-item><a class="nav-link text-primary" href=/index.html><i class="fas fa-home"></i>Home</a></li><li class=nav-item><a class="nav-link text-primary" href=/page/about/><i class="fa fa-info-circle"></i>About</a></li><li class=nav-item><a class="nav-link text-primary" href=/page/public-speaking><i class="fa fa-microphone"></i>Speaking</a></li></ul></div></div></nav><main role=main><div class="container mt-3 mb-3"><div class=card><div class=card-body><h1 class=card-title><a href=/2015/05/21/logging-dev-side/>Logging (Developer side)</a></h1><h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-day"></i>&nbsp;21 May 2015 -
+<i class="fas fa-user"></i>&nbsp;Giulio Vian
+- <i class="fas fa-clock"></i>&nbsp;~4 Minutes</h6><p class=card-text><p>I wrote lot of code in my life, and I discovered some patterns that can be
+useful to other people, so let&rsquo;s share and discuss.
+More than design patterns, they are ways of applying classical
+<a href=https://it.wikipedia.org/wiki/Design_Patterns target=_blank rel="noopener noreferrer">Gang of Four Design Patterns
+&nbsp;<i class="fas fa-external-link-alt"></i></a>
+in specific contexts.</p><p>Today, I will start discussing writing logging and monitoring code,
+and you will see why I take these two together.
+The code examples use the C# language, but the ideas
+can be equally applied to C++, Java, Go or any other object oriented language
+with an <em>interface</em> feature that decouples implementation from definition.</p><h2 id=the-common-way>The common way</h2><p>A typical logging code goes like this</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp>    Item[] Process(Item[] items)
+    {
+        logger.Debug(<span style=color:#e6db74>&#34;Entered Process&#34;</span>);
+        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i = <span style=color:#ae81ff>0</span>; i &lt; <span style=color:#ae81ff>10</span>; i++)
+        {
+            logger.Info(<span style=color:#e6db74>&#34;About to process item #{0}&#34;</span>, i);
+            <span style=color:#75715e>// ...
+</span><span style=color:#75715e></span>        }
+        logger.Debug(<span style=color:#e6db74>&#34;Exiting Process&#34;</span>);
+    }
+</code></pre></div><p>with <code>logger</code> being some kind of semi-global variable that represents
+the entry point to the logging library or subsystem.
+<code>Info</code> and <code>Debug</code> methods resemble the <em>log4J</em>/<em>log4net</em> style.</p><h2 id=why-i-do-not-like-it>Why I do not like it</h2><p>What is wrong with it?
+Many things:</p><ol><li>There is no clear distinction between application code and infrastructure code;</li><li>Formatting information is dispersed throughout the application;</li><li>Positional loosely typed arguments;</li><li>Hard-coded strings, that is no built-in localization;</li><li>Dependence on a specific logging library;</li><li>Logging code is scattered in all source files impeding global changes.</li></ol><h2 id=what-i-propose>What I propose</h2><p>I propose a different approach that almost completely decouples application
+code from infrastructure code.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp>    Item[] Process(Item[] items)
+    {
+        logger.EnteredProcess();
+        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i = <span style=color:#ae81ff>0</span>; i &lt; <span style=color:#ae81ff>10</span>; i++)
+        {
+            logger.AboutToProcessItem(i);
+            <span style=color:#75715e>// ...
+</span><span style=color:#75715e></span>        }
+        logger.ExitingProcess();
+    }
+</code></pre></div><p>here logger is an instance of a class that implements an interface <code>ILogEvents</code>
+or similar.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> ILogEvents
+{
+    <span style=color:#66d9ef>void</span> EnteredProcess();
+    <span style=color:#66d9ef>void</span> AboutToProcessItem(<span style=color:#66d9ef>int</span> i);
+    <span style=color:#66d9ef>void</span> ExitingProcess();
+}
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConsoleLogger</span> : ILogEvents
+{
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> EnteredProcess()
+    {
+        Console.WriteLine(<span style=color:#e6db74>&#34;Entered Process&#34;</span>);
+    }
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> AboutToProcessItem(<span style=color:#66d9ef>int</span> i)
+    {
+        Console.WriteLine(<span style=color:#e6db74>&#34;About to process item #{0}&#34;</span>, i);
+    }
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> ExitingProcess()
+    {
+        Console.WriteLine(<span style=color:#e6db74>&#34;Exiting Process&#34;</span>);
+    }
+}
+</code></pre></div><p>note that the caller is completely decoupled from implementation. Logging can be
+on a file or in a window of a GUI application.</p><p>The idea that the caller signal an <em>event</em> to the logging and monitoring
+infrastructure, means that implementation can be much richer. Let&rsquo;s add
+some monitoring information.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConsoleLogger</span> : ILogEvents
+{
+    <span style=color:#66d9ef>var</span> processStopwatch = <span style=color:#66d9ef>new</span> Stopwatch();
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> EnteredProcess()
+    {
+        processStopwatch.Restart();
+        Console.WriteLine(<span style=color:#e6db74>&#34;Entered Process&#34;</span>);
+    }
+    <span style=color:#75715e>//...
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> ExitingProcess()
+    {
+        processStopwatch.Stop();
+        Console.WriteLine(<span style=color:#e6db74>&#34;Exiting Process after {0} ms&#34;</span>, processStopwatch.ElapsedMilliseconds);
+    }
+}
+</code></pre></div><p>or fancy formatting</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> AboutToProcessItem(<span style=color:#66d9ef>int</span> i)
+    {
+        ConsoleColor save = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(<span style=color:#e6db74>&#34;[Info ] About to process item #{0}&#34;</span>, i);
+        Console.ForegroundColor = save;
+    }
+</code></pre></div><p>or localization</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ConsoleLogger</span> : ILogEvents
+{
+    ResourceManager resmgr = <span style=color:#66d9ef>new</span> ResourceManager(<span style=color:#e6db74>&#34;MyApplication.LoggingMessages&#34;</span>, 
+                          Assembly.GetExecutingAssembly());
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> EnteredProcess()
+    {
+        <span style=color:#75715e>// in a server context, you should pick from configuration or system CurrentCulture
+</span><span style=color:#75715e></span>        Console.WriteLine(resmgr.GetString(<span style=color:#e6db74>&#34;EnteredProcess&#34;</span>,Thread.CurrentThread.CurrentUICulture));
+    }
+    
+    <span style=color:#75715e>//...
+</span><span style=color:#75715e></span>}
+</code></pre></div><p>The caller never changes: no need to recompile!</p><p>I let the reader refactor this code in common classes or using a library.
+The crucial part is the separation of concern between application code and
+infrastructural code.</p><h2 id=no-pain-no-gain>No pain, no gain</h2><p>No approach is perfect and this has also its drawbacks. Let&rsquo;s enumerate some.</p><ol><li>A gargantuan interface with tens or hundreds of methods;</li><li>The reference to the object implementing the interface must be passed around
+from high-level classes to lesser ones;</li><li>The class implementing the interface tends to know all kind of types.</li></ol><p>This latter requires an explanation; imagine that we pass, not just the index,
+but the <code>Item</code> we are about to process:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp>    logger.AboutToProcessItem(i, items[i]);
+</code></pre></div><p>as a consequence our <code>ILogEvents</code> interface will reference the <code>Item</code> type.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>interface</span> ILogEvents
+{
+    <span style=color:#66d9ef>void</span> EnteredProcess();
+    <span style=color:#66d9ef>void</span> AboutToProcessItem(<span style=color:#66d9ef>int</span> i, Item item);
+    <span style=color:#66d9ef>void</span> ExitingProcess();
+}
+</code></pre></div><p>The caller code is simpler, but couples the interface and the implementer class.
+At least, re-compiling is required.
+The balance here is similar to writing good unit tests and make them robust
+in face of refactoring and changes.</p><h3 id=mitigation>Mitigation</h3><p>These problems can be mitigated by using multiple logging interfaces — a good rule of thumb, can be one interface per module or assembly.
+The logger object can be stored in some pseudo-global variable, to avoid passing it around. As usual, you must be careful when code is multi-threaded or asynchronous.</p><h2 id=final-words>Final words</h2><p>My proposal is no rocket science, but I would like to see if it has been used elsewhere. Could be that I am the only one who had to fight with code so poorly instrumented, to be forced going to the draw-board.</p></p></div><div class=card-footer><small class=text-muted><i class="fas fa-folder text-primary"></i>&nbsp;
+<a href=/categories/#programming class="badge badge-primary"><span>Programming</span></a><br><i class="fas fa-tags text-secondary"></i>&nbsp;
+<a href=/tags/#development class="badge badge-secondary"><span>Development</span></a>
+<a href=/tags/#design-patterns class="badge badge-secondary"><span>Design Patterns</span></a>
+<a href=/tags/#logging class="badge badge-secondary"><span>Logging</span></a>
+<a href=/tags/#monitoring class="badge badge-secondary"><span>Monitoring</span></a></small></div></div></div></main><footer class="navbar-light border-top"><div class=container><div class=row><div class="col-12 col-md-3 mb-3"><h5>Giulio Vian's Blog!</h5>Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia.</div><div class="col-12 col-md-3 mb-3"><h5>Social</h5><ul class="list-unstyled list-inline"><li class=list-inline-item><a href=https://github.com/giuliov target=_blank rel="noopener noreferrer" title=GitHub class="fab fa-github fa-2x"></a></li><li class=list-inline-item><a href=https://stackoverflow.com/users/100864 target=_blank rel="noopener noreferrer" title="Stack Overflow" class="fab fa-stack-overflow fa-2x"></a></li><li class=list-inline-item><a href=https://medium.com/@giuliovdev target=_blank rel="noopener noreferrer" title=Medium class="fab fa-medium fa-2x"></a></li><li class=list-inline-item><a href=https://linkedin.com/in/giuliovian target=_blank rel="noopener noreferrer" title=LinkedIn class="fab fa-linkedin fa-2x"></a></li><li class=list-inline-item><a href=https://linkedin.com/company/unum-ireland-ltd-it target=_blank rel="noopener noreferrer" title="LinkedIn Company" class="fab fa-linkedin fa-2x"></a></li><li class=list-inline-item><a href=https://xing.com/profile/Giulio_Vian target=_blank rel="noopener noreferrer" title=Xing class="fab fa-xing fa-2x"></a></li><li class=list-inline-item><a href=https://slideshare.net/giuliov target=_blank rel="noopener noreferrer" title=SlideShare class="fab fa-slideshare fa-2x"></a></li><li class=list-inline-item><a href=https://youtube.com/UCZ-J6JRyvz6aaJ9zCN5wpxA target=_blank rel="noopener noreferrer" title=YouTube class="fab fa-youtube fa-2x"></a></li><li class=list-inline-item><a href=https://twitter.com/giulio_vian target=_blank rel="noopener noreferrer" title=Twitter class="fab fa-twitter fa-2x"></a></li><li class=list-inline-item><a href=mailto:giulio.dev@casavian.eu title=Email class="fas fa-envelope fa-2x"></a></li></ul></div><div class="col-12 col-md-3 mb-3"><h5>Site</h5><ul class=list-unstyled><li><a href=/about/><i class="fas fa-address-card"></i>About</a></li><li><a href=/categories/><i class="fas fa-folder"></i>Categories</a></li><li><a href=/tags/><i class="fas fa-tags"></i>Tags</a></li></ul></div><div class="col-12 col-md-3 mb-3">&copy; 2020 Giulio Vian<br>Theme by <a href=https://www.spech.de target=_blank rel="noopener noreferrer">Sebastian Pech</a>.</div></div></div></footer><script src=/js/vendor.min.0497fa926ed3dc2241b91e016467480841da9749a0f7c40ed3960c3c238745e5accb5ec5e07654668e11047bbf96f95083b88dd49a845781011aba42e4f00a5d.js integrity="sha512-BJf6km7T3CJBuR4BZGdICEHal0mg98QO05YMPCOHReWsy17F4HZUZo4RBHu/lvlQg7iN1JqEV4EBGrpC5PAKXQ=="></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-46796059-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>

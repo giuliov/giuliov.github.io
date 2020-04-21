@@ -1,0 +1,67 @@
+==================================================================
+https://keybase.io/giuliov
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://blog.casavian.eu
+  * I am giuliov (https://keybase.io/giuliov) on keybase.
+  * I have a public key with fingerprint 6168 0028 14D8 ED4E EE8D  8056 33A9 38DC B982 E1A7
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "6168002814d8ed4eee8d805633a938dcb982e1a7",
+            "host": "keybase.io",
+            "key_id": "33a938dcb982e1a7",
+            "kid": "0101eaa0c8724a3bd436ede1df5e9a5421e0e29949d0b88235a40ef5cc68cc48db700a",
+            "uid": "01f0bfb6b47d4d8532e124188a75a319",
+            "username": "giuliov"
+        },
+        "service": {
+            "hostname": "blog.casavian.eu",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1428076010,
+    "expire_in": 157680000,
+    "prev": "113b6f94bf47bf5b62801454cb164d00a757ed2515b778701202f3348bc17937",
+    "seqno": 9,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.8
+Comment: https://keybase.io/crypto
+
+yMIfAnicbVJrSBRRGF3dCtsKDYQoosdUpiDLvTN3Zu6slUgZhYHFapCk270zd7bB
+bWbbl0mJUVb2oowsJHpghWtRYLSZ2psIIvxVkRAE0oPoRfSiRKI7Yf/6dbnfd875
+vnP47k/xenxZC87iF8Pzzq/OenR3adJTPSvzbqtAHaNRCGwV6tnfx7TsMItFY5ad
+EAKCAhUMgIghMjAzEGMMGxjIiiQRTcKGTjUsMkhUoVjY6MRdBpehJM78lsNr/BOy
+DF79D77+bwNAABkhQMeqiIhEDSQpzGDQMGWmERmJkAEmahrSDEAxFiWZIMBMWdcV
+rOsIG1QFgHC55JicCahJFYpUg68sS3yaiCDGRJWJBDUXGGcxm2xiHB22khHLSQlN
+xQIvpiyduQm4RsYANOKE/TqJk5RFbD9Lcno05iQc3Ynw7sZEIhpwyYnGqItuYDQ0
+phOilm3wJDkhxWJxy7GFAORIPWG5whCJGKgKN18ssC1RK8ZClouQVTduANwxLMUl
+IZSoYmqImkilpkwVzoNIRjqFCjK4c1VWmSHKUKaqilUARSCakoQw1aGqSW7OcbbZ
+doSAxtckYS4Zt8I2SSRjTGi6d2f9OE+WzzNhfLZ7Cx7fxLx/F9JHczyn6g4Mzr8f
+fJOeWrpkcFHPzxvZiXczi3Z2lwVy8568r5g4+CB19NM2q7l25sCKqo6nK5tfrhFG
+yheWZC5VtLbuP9d/DPquf9k3z5v+fdlXmP0xeKY7f1XjaEFZ+4bHpYXe6Zm6yOTe
+tJlbeKXodHX6TVddqKq7HF749TWzdvnHfXu+mXP6Xx/saxn5XtS2+Oacz0OHfsjT
+GvS5Hb96blzU0rsfmYEj22tC2fmZllfPS8X2n3hc56bKvGWzD/uD3oW71CpZLBGP
+z4ARu6TAetiQkxMbrem8MxI9VPnsai49OXA7Klwbrfk9fOpWWd+knrbO4Pu3O2qD
+676c6N3bNdQUrw9/+AOJrCVL
+=DuD/
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/giuliov
+
+==================================================================

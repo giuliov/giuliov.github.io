@@ -1,0 +1,80 @@
+<!doctype html><html lang=en><meta charset=utf-8><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/blog.casavian.eu\/"},"articleSection":"post","name":"Annoyed by TF276000 error?","headline":"Annoyed by TF276000 error?","description":"Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia.","inLanguage":"en","author":"Giulio Vian","creator":"Giulio Vian","publisher":"Giulio Vian","accountablePerson":"Giulio Vian","copyrightHolder":"Giulio Vian","copyrightYear":"2015","datePublished":"2015-05-28T00:00:00Z","dateModified":"2015-05-28T00:00:00Z","url":"\/2015\/05\/28\/annoyed-by-tf276000\/","wordCount":"348","keywords":["TFS 2013","TFS Administration","Blog"]}</script><title>Annoyed by TF276000 error? &ndash; Giulio Vian's Blog!</title><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content="Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia."><meta name=author content="Giulio Vian"><link rel=icon href=/favicon.ico><meta itemprop=name content="Annoyed by TF276000 error?"><meta itemprop=description content="Annoyed by this error?
+ [Full Analysis Database Sync]:
+TF276000: The current Analysis Database Sync job has exited without making any changes. Either another Analysis Database Sync job is already in progress, or the Analysis Database Sync job cannot run because an Optimize Databases job is running. The next Analysis Database Sync job will start at its scheduled time.
+ It shows up in the Cube Status report of the Administrative Report Pack &nbsp; , and you are using them, aren&rsquo;t you?"><meta itemprop=datePublished content="2015-05-28T00:00:00+00:00"><meta itemprop=dateModified content="2015-05-28T00:00:00+00:00"><meta itemprop=wordCount content="348"><meta itemprop=keywords content="TFS 2013,TFS Administration,"><meta property="og:title" content="Annoyed by TF276000 error?"><meta property="og:description" content="Annoyed by this error?
+ [Full Analysis Database Sync]:
+TF276000: The current Analysis Database Sync job has exited without making any changes. Either another Analysis Database Sync job is already in progress, or the Analysis Database Sync job cannot run because an Optimize Databases job is running. The next Analysis Database Sync job will start at its scheduled time.
+ It shows up in the Cube Status report of the Administrative Report Pack &nbsp; , and you are using them, aren&rsquo;t you?"><meta property="og:type" content="article"><meta property="og:url" content="http://blog.casavian.eu/2015/05/28/annoyed-by-tf276000/"><meta property="article:published_time" content="2015-05-28T00:00:00+00:00"><meta property="article:modified_time" content="2015-05-28T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Annoyed by TF276000 error?"><meta name=twitter:description content="Annoyed by this error?
+ [Full Analysis Database Sync]:
+TF276000: The current Analysis Database Sync job has exited without making any changes. Either another Analysis Database Sync job is already in progress, or the Analysis Database Sync job cannot run because an Optimize Databases job is running. The next Analysis Database Sync job will start at its scheduled time.
+ It shows up in the Cube Status report of the Administrative Report Pack &nbsp; , and you are using them, aren&rsquo;t you?"><meta name=twitter:site content="@giulio_vian"><link rel=alternate href=/index.xml type=application/rss+xml title="Giulio Vian's Blog!"><link rel=stylesheet href=/css/vendor.min.95b0b4c4607aec507f0fc9d9c36a12a4613ccac06f9423caa43e265cb58eb5f90709388cc0fa166ac3ca836b4163e6d0569b8b86065d9cabdf223c5ea9a63b08.css integrity="sha512-lbC0xGB67FB/D8nZw2oSpGE8ysBvlCPKpD4mXLWOtfkHCTiMwPoWasPKg2tBY+bQVpuLhgZdnKvfIjxeqaY7CA=="><link href=http://blog.casavian.eu/css/cookieconsent.min.cd0d0b6e50ff01ff2f3a9a70d7cfb66a7c6cb9acf7a566325568be6d3bd31fc4.css rel=stylesheet type=text/css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous><script src=http://blog.casavian.eu/js/cookieconsent.min.e55842a856a6d829feca3c3ad736c136b6c7549e9247274f78aa296259e06e24.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous async></script><script>window.addEventListener("load",function(){window.cookieconsent.initialise({"palette":{"popup":{"background":"#428bca","text":"#ffffff"},"button":{"background":"#f71559"}},"content":{"message":'This website uses cookies.',"dismiss":'Got it!',"link":'Learn more.',"href":"http:\/\/blog.casavian.eu\/page\/privacy-cookies-policy\/"},"position":"bottom-right"})});</script><body><nav class="navbar navbar-light bg-white navbar-expand-lg border-bottom"><div class=container><a class="navbar-brand text-primary" href=/>Giulio Vian's Blog!</a>
+<button class="navbar-toggler collapsed" type=button data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"><li class=nav-item><a class="nav-link text-primary" href=/index.html><i class="fas fa-home"></i>Home</a></li><li class=nav-item><a class="nav-link text-primary" href=/page/about/><i class="fa fa-info-circle"></i>About</a></li><li class=nav-item><a class="nav-link text-primary" href=/page/public-speaking><i class="fa fa-microphone"></i>Speaking</a></li></ul></div></div></nav><main role=main><div class="container mt-3 mb-3"><div class=card><div class=card-body><h1 class=card-title><a href=/2015/05/28/annoyed-by-tf276000/>Annoyed by TF276000 error?</a></h1><h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-day"></i>&nbsp;28 May 2015 -
+<i class="fas fa-user"></i>&nbsp;Giulio Vian
+- <i class="fas fa-clock"></i>&nbsp;~2 Minutes</h6><p class=card-text><p>Annoyed by this error?</p><blockquote><p>[Full Analysis Database Sync]:<br>TF276000: The current Analysis Database Sync job has exited without making any changes. Either another Analysis Database Sync job is already in progress, or the Analysis Database Sync job cannot run because an Optimize Databases job is running. The next Analysis Database Sync job will start at its scheduled time.</p></blockquote><p>It shows up in the <strong>Cube Status</strong> report of the <em><a href=http://blogs.msdn.com/b/granth/archive/2010/07/12/administrative-report-pack-for-team-foundation-server-2010.aspx target=_blank rel="noopener noreferrer">Administrative Report Pack
+&nbsp;<i class="fas fa-external-link-alt"></i>
+</a></em>,
+and you are using them, aren&rsquo;t you?</p><h2 id=solution-1---move-the-full-analysis-database-sync-to-a-later-time>Solution 1 - Move the Full Analysis Database Sync to a later time</h2><p>Connect to one of your Application Tier servers; open the page at
+<a href=http://localhost:8080/tfs/TeamFoundation/Administration/v3.0/WarehouseControlService.asmx>http://localhost:8080/tfs/TeamFoundation/Administration/v3.0/WarehouseControlService.asmx</a> and select <code>ChangeSetting</code>.</p><p>For <code>settingId</code> input <code>DailyFullProcessingTime</code>, for <code>newValue</code> set <code>03:00:00.0000000</code>, which is local time,
+as shown in the picture.</p><p><img src=/images/2015-05-27_102232.png alt="ChangeSetting page"></p><p>Now, click the <em>Invoke</em> button: it will open another page or tab with similar content.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-XML data-lang=XML><span style=color:#f92672>&lt;string</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>&#34;http://schemas.microsoft.com/TeamFoundation/2005/06/Services/Controller/03&#34;</span><span style=color:#f92672>&gt;</span>
+ The setting DailyFullProcessingTime has been successfully changed to 03:00:00.0000000+02:00.
+<span style=color:#f92672>&lt;/string&gt;</span>
+</code></pre></div><p>Note in this example the <strong>+02:00</strong> string, corresponding to
+<a href=https://en.wikipedia.org/wiki/Central_European_Summer_Time target=_blank rel="noopener noreferrer">CEST (Central European Summer Time)
+&nbsp;<i class="fas fa-external-link-alt"></i>
+</a>, our TFS local time.</p><h2 id=solution-2---change-the-optimize-databases-schedule>Solution 2 - Change the Optimize Databases schedule</h2><p>This time there is no simple user interface,
+must usewrite some code as explained in the forum
+<a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/52bef4ac-80f0-464d-8fcc-9e24ddd7fffb/warehouse-optimize-databases-job-runs-at-wrong-time?forum=tfsadmin">https://social.msdn.microsoft.com/Forums/vstudio/en-US/52bef4ac-80f0-464d-8fcc-9e24ddd7fffb/warehouse-optimize-databases-job-runs-at-wrong-time?forum=tfsadmin</a>.</p><p>I converted it to Powershell for easier consumption.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Powershell data-lang=Powershell><span style=color:#66d9ef>param</span>(
+    $tfsUrl = <span style=color:#e6db74>&#34;http://localhost:8080/tfs&#34;</span>,
+    $newSchedule = (Get-Date -Year 2015 -Month 1 -Day 1 -Hour 3 -Minute 0 -Second 0)
+)
+
+<span style=color:#66d9ef>function</span> Get-TFSCollection(
+    [<span style=color:#66d9ef>Parameter</span>(<span style=color:#66d9ef>Mandatory</span>=$True)]
+    <span style=color:#66d9ef>[Uri]</span>  $collectionurl,
+    [<span style=color:#66d9ef>Parameter</span>(<span style=color:#66d9ef>Mandatory</span>=$False)]
+    <span style=color:#66d9ef>[string[]]</span>  $assemblies = @()
+)
+{
+    <span style=color:#66d9ef>if</span> (Test-Path <span style=color:#e6db74>&#34;HKLM:\SOFTWARE\Microsoft\TeamFoundationServer&#34;</span>) {
+        $highestTFSversion = <span style=color:#e6db74>&#34;{0:N1}&#34;</span> <span style=color:#f92672>-f</span> (Get-ChildItem -Path <span style=color:#e6db74>&#34;HKLM:\SOFTWARE\Microsoft\TeamFoundationServer&#34;</span> | Split-Path -Leaf | <span style=color:#66d9ef>foreach</span> { $_ <span style=color:#f92672>-as</span> <span style=color:#66d9ef>[double]</span> } | sort -Descending | select -First 1)
+        $tfsClientVersion = <span style=color:#e6db74>&#34;, Version=$highestTFSversion.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&#34;</span>
+        <span style=color:#66d9ef>[void][System.Reflection.Assembly]</span>::Load(<span style=color:#e6db74>&#34;Microsoft.TeamFoundation.Client&#34;</span>+$tfsClientVersion)
+        $assemblies | <span style=color:#66d9ef>foreach</span> {
+            <span style=color:#66d9ef>[void][System.Reflection.Assembly]</span>::Load($_+$tfsClientVersion)
+        }<span style=color:#75715e>#for</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>[Microsoft.TeamFoundation.Client.TfsTeamProjectCollectionFactory]</span>::GetTeamProjectCollection($collectionurl)
+    }<span style=color:#75715e>#if</span>
+}
+
+$server = Get-TFSCollection $tfsUrl
+$jobService = $server.GetService(<span style=color:#66d9ef>[Microsoft.TeamFoundation.Framework.Client.ITeamFoundationJobService]</span>)
+$jobs = $jobService.QueryJobs()
+
+$exist = $false
+<span style=color:#66d9ef>foreach</span> ($job <span style=color:#66d9ef>in</span> $jobs)
+{
+	<span style=color:#66d9ef>if</span> ($job.Name <span style=color:#f92672>-eq</span> <span style=color:#e6db74>&#34;Optimize Databases&#34;</span>)
+	{
+		<span style=color:#75715e># Only one job is necessary</span>
+		<span style=color:#66d9ef>if</span> ($exist)
+		{
+			$jobService.DeleteJob($job)
+			<span style=color:#66d9ef>continue</span>
+		}
+
+		$optimizeDatabasesJob = $job
+		$optimizeDatabasesJob.Schedule.Clear()
+
+		$schedule = New-Object -TypeName <span style=color:#e6db74>&#39;Microsoft.TeamFoundation.Framework.Client.TeamFoundationJobSchedule&#39;</span> -ArgumentList $newSchedule,86400
+        $schedule.TimeZone = <span style=color:#66d9ef>[TimeZoneInfo]</span>::Local
+		$optimizeDatabasesJob.Schedule.Add($schedule)
+
+		$jobService.UpdateJob($optimizeDatabasesJob)
+		$exist = $true
+	}<span style=color:#75715e>#if</span>
+}<span style=color:#75715e>#for</span>
+</code></pre></div><p>The less errors, the better, isn&rsquo;t it?</p></p></div><div class=card-footer><small class=text-muted><i class="fas fa-folder text-primary"></i>&nbsp;
+<a href=/categories/#alm class="badge badge-primary"><span>ALM</span></a><br><i class="fas fa-tags text-secondary"></i>&nbsp;
+<a href=/tags/#tfs-2013 class="badge badge-secondary"><span>TFS 2013</span></a>
+<a href=/tags/#tfs-administration class="badge badge-secondary"><span>TFS Administration</span></a></small></div></div></div></main><footer class="navbar-light border-top"><div class=container><div class=row><div class="col-12 col-md-3 mb-3"><h5>Giulio Vian's Blog!</h5>Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia.</div><div class="col-12 col-md-3 mb-3"><h5>Social</h5><ul class="list-unstyled list-inline"><li class=list-inline-item><a href=https://github.com/giuliov target=_blank rel="noopener noreferrer" title=GitHub class="fab fa-github fa-2x"></a></li><li class=list-inline-item><a href=https://stackoverflow.com/users/100864 target=_blank rel="noopener noreferrer" title="Stack Overflow" class="fab fa-stack-overflow fa-2x"></a></li><li class=list-inline-item><a href=https://medium.com/@giuliovdev target=_blank rel="noopener noreferrer" title=Medium class="fab fa-medium fa-2x"></a></li><li class=list-inline-item><a href=https://linkedin.com/in/giuliovian target=_blank rel="noopener noreferrer" title=LinkedIn class="fab fa-linkedin fa-2x"></a></li><li class=list-inline-item><a href=https://linkedin.com/company/unum-ireland-ltd-it target=_blank rel="noopener noreferrer" title="LinkedIn Company" class="fab fa-linkedin fa-2x"></a></li><li class=list-inline-item><a href=https://xing.com/profile/Giulio_Vian target=_blank rel="noopener noreferrer" title=Xing class="fab fa-xing fa-2x"></a></li><li class=list-inline-item><a href=https://slideshare.net/giuliov target=_blank rel="noopener noreferrer" title=SlideShare class="fab fa-slideshare fa-2x"></a></li><li class=list-inline-item><a href=https://youtube.com/UCZ-J6JRyvz6aaJ9zCN5wpxA target=_blank rel="noopener noreferrer" title=YouTube class="fab fa-youtube fa-2x"></a></li><li class=list-inline-item><a href=https://twitter.com/giulio_vian target=_blank rel="noopener noreferrer" title=Twitter class="fab fa-twitter fa-2x"></a></li><li class=list-inline-item><a href=mailto:giulio.dev@casavian.eu title=Email class="fas fa-envelope fa-2x"></a></li></ul></div><div class="col-12 col-md-3 mb-3"><h5>Site</h5><ul class=list-unstyled><li><a href=/about/><i class="fas fa-address-card"></i>About</a></li><li><a href=/categories/><i class="fas fa-folder"></i>Categories</a></li><li><a href=/tags/><i class="fas fa-tags"></i>Tags</a></li></ul></div><div class="col-12 col-md-3 mb-3">&copy; 2020 Giulio Vian<br>Theme by <a href=https://www.spech.de target=_blank rel="noopener noreferrer">Sebastian Pech</a>.</div></div></div></footer><script src=/js/vendor.min.0497fa926ed3dc2241b91e016467480841da9749a0f7c40ed3960c3c238745e5accb5ec5e07654668e11047bbf96f95083b88dd49a845781011aba42e4f00a5d.js integrity="sha512-BJf6km7T3CJBuR4BZGdICEHal0mg98QO05YMPCOHReWsy17F4HZUZo4RBHu/lvlQg7iN1JqEV4EBGrpC5PAKXQ=="></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-46796059-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>

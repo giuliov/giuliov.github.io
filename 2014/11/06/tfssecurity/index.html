@@ -1,0 +1,74 @@
+<!doctype html><html lang=en><meta charset=utf-8><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/blog.casavian.eu\/"},"articleSection":"post","name":"TfsSecurity wrapper","headline":"TfsSecurity wrapper","description":"Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia.","inLanguage":"en","author":"Giulio Vian","creator":"Giulio Vian","publisher":"Giulio Vian","accountablePerson":"Giulio Vian","copyrightHolder":"Giulio Vian","copyrightYear":"2014","datePublished":"2014-11-06T00:00:00Z","dateModified":"2014-11-06T00:00:00Z","url":"\/2014\/11\/06\/tfssecurity\/","wordCount":"267","keywords":["TFS","TfsSecurity","TFS Administration","PowerShell","Blog"]}</script><title>TfsSecurity wrapper &ndash; Giulio Vian's Blog!</title><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content="Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia."><meta name=author content="Giulio Vian"><link rel=icon href=/favicon.ico><meta itemprop=name content="TfsSecurity wrapper"><meta itemprop=description content="TfsSecurity &nbsp;  is an ugly but effective tool. I said ugly because the scope parameter is hard to get: you need to ask the database or go through the API.
+This latter is a palatable option in PowerShell, so here is a sample script to create a Group in an existing Team Project.
+[CmdletBinding()] param ( [Parameter(Mandatory=$true, Position=0)] [uri] $collection, [Parameter(Mandatory=$true, Position=1)] [string] $project, [Parameter(Mandatory=$true, Position=2)] [string] $groupName, [Parameter(Mandatory=$false, Position=3)] [string] $groupDescription = &#34;&#34; ) $ErrorActionPreference = 'Stop' Set-StrictMode -Version Latest $TFSSecurity = &#34;${env:ProgramFiles(x86)}\Microsoft Visual Studio 12."><meta itemprop=datePublished content="2014-11-06T00:00:00+00:00"><meta itemprop=dateModified content="2014-11-06T00:00:00+00:00"><meta itemprop=wordCount content="267"><meta itemprop=keywords content="TFS,TfsSecurity,TFS Administration,PowerShell,"><meta property="og:title" content="TfsSecurity wrapper"><meta property="og:description" content="TfsSecurity &nbsp;  is an ugly but effective tool. I said ugly because the scope parameter is hard to get: you need to ask the database or go through the API.
+This latter is a palatable option in PowerShell, so here is a sample script to create a Group in an existing Team Project.
+[CmdletBinding()] param ( [Parameter(Mandatory=$true, Position=0)] [uri] $collection, [Parameter(Mandatory=$true, Position=1)] [string] $project, [Parameter(Mandatory=$true, Position=2)] [string] $groupName, [Parameter(Mandatory=$false, Position=3)] [string] $groupDescription = &#34;&#34; ) $ErrorActionPreference = 'Stop' Set-StrictMode -Version Latest $TFSSecurity = &#34;${env:ProgramFiles(x86)}\Microsoft Visual Studio 12."><meta property="og:type" content="article"><meta property="og:url" content="http://blog.casavian.eu/2014/11/06/tfssecurity/"><meta property="article:published_time" content="2014-11-06T00:00:00+00:00"><meta property="article:modified_time" content="2014-11-06T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="TfsSecurity wrapper"><meta name=twitter:description content="TfsSecurity &nbsp;  is an ugly but effective tool. I said ugly because the scope parameter is hard to get: you need to ask the database or go through the API.
+This latter is a palatable option in PowerShell, so here is a sample script to create a Group in an existing Team Project.
+[CmdletBinding()] param ( [Parameter(Mandatory=$true, Position=0)] [uri] $collection, [Parameter(Mandatory=$true, Position=1)] [string] $project, [Parameter(Mandatory=$true, Position=2)] [string] $groupName, [Parameter(Mandatory=$false, Position=3)] [string] $groupDescription = &#34;&#34; ) $ErrorActionPreference = 'Stop' Set-StrictMode -Version Latest $TFSSecurity = &#34;${env:ProgramFiles(x86)}\Microsoft Visual Studio 12."><meta name=twitter:site content="@giulio_vian"><link rel=alternate href=/index.xml type=application/rss+xml title="Giulio Vian's Blog!"><link rel=stylesheet href=/css/vendor.min.95b0b4c4607aec507f0fc9d9c36a12a4613ccac06f9423caa43e265cb58eb5f90709388cc0fa166ac3ca836b4163e6d0569b8b86065d9cabdf223c5ea9a63b08.css integrity="sha512-lbC0xGB67FB/D8nZw2oSpGE8ysBvlCPKpD4mXLWOtfkHCTiMwPoWasPKg2tBY+bQVpuLhgZdnKvfIjxeqaY7CA=="><link href=http://blog.casavian.eu/css/cookieconsent.min.cd0d0b6e50ff01ff2f3a9a70d7cfb66a7c6cb9acf7a566325568be6d3bd31fc4.css rel=stylesheet type=text/css integrity="sha256-zQ0LblD/Af8vOppw18+2anxsuaz3pWYyVWi+bTvTH8Q=" crossorigin=anonymous><script src=http://blog.casavian.eu/js/cookieconsent.min.e55842a856a6d829feca3c3ad736c136b6c7549e9247274f78aa296259e06e24.js integrity="sha256-5VhCqFam2Cn+yjw61zbBNrbHVJ6SRydPeKopYlngbiQ=" crossorigin=anonymous async></script><script>window.addEventListener("load",function(){window.cookieconsent.initialise({"palette":{"popup":{"background":"#428bca","text":"#ffffff"},"button":{"background":"#f71559"}},"content":{"message":'This website uses cookies.',"dismiss":'Got it!',"link":'Learn more.',"href":"http:\/\/blog.casavian.eu\/page\/privacy-cookies-policy\/"},"position":"bottom-right"})});</script><body><nav class="navbar navbar-light bg-white navbar-expand-lg border-bottom"><div class=container><a class="navbar-brand text-primary" href=/>Giulio Vian's Blog!</a>
+<button class="navbar-toggler collapsed" type=button data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"><li class=nav-item><a class="nav-link text-primary" href=/index.html><i class="fas fa-home"></i>Home</a></li><li class=nav-item><a class="nav-link text-primary" href=/page/about/><i class="fa fa-info-circle"></i>About</a></li><li class=nav-item><a class="nav-link text-primary" href=/page/public-speaking><i class="fa fa-microphone"></i>Speaking</a></li></ul></div></div></nav><main role=main><div class="container mt-3 mb-3"><div class=card><div class=card-body><h1 class=card-title><a href=/2014/11/06/tfssecurity/>TfsSecurity wrapper</a></h1><h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-day"></i>&nbsp;06 Nov 2014 -
+<i class="fas fa-user"></i>&nbsp;Giulio Vian
+- <i class="fas fa-clock"></i>&nbsp;~2 Minutes</h6><p class=card-text><p><a href=http://msdn.microsoft.com/en-us/library/ms252504.aspx target=_blank rel="noopener noreferrer">TfsSecurity
+&nbsp;<i class="fas fa-external-link-alt"></i></a> is an ugly but effective tool.
+I said ugly because the scope parameter is hard to get: you need to ask the database or go through the API.</p><p>This latter is a palatable option in PowerShell, so here is a sample script to create a Group in an existing Team Project.</p><pre><code class=language-PowerShell# data-lang=PowerShell#>[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$true, Position=0)]
+    [uri]
+    $collection,
+    [Parameter(Mandatory=$true, Position=1)]
+    [string]
+    $project,
+    [Parameter(Mandatory=$true, Position=2)]
+    [string]
+    $groupName,
+    [Parameter(Mandatory=$false, Position=3)]
+    [string]
+    $groupDescription = &quot;&quot;
+)
+ 
+$ErrorActionPreference = 'Stop'
+Set-StrictMode -Version Latest
+ 
+$TFSSecurity = &quot;${env:ProgramFiles(x86)}\Microsoft Visual Studio 12.0\Common7\IDE\TFSSecurity.exe&quot;
+
+# load the required DLL
+[void][System.Reflection.Assembly]::LoadWithPartialName(&quot;Microsoft.TeamFoundation.Client&quot;)
+
+function Get-TFS
+{
+    param(
+    [string] $serverName = $(throw 'serverName is required')
+    )
+
+    $propertiesToAdd = (
+        ('VCS', 'Microsoft.TeamFoundation.VersionControl.Client', 'Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer'),
+        ('WIT', 'Microsoft.TeamFoundation.WorkItemTracking.Client', 'Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore'),
+        ('CSS', 'Microsoft.TeamFoundation', 'Microsoft.TeamFoundation.Server.ICommonStructureService'),
+        ('GSS', 'Microsoft.TeamFoundation', 'Microsoft.TeamFoundation.Server.IGroupSecurityService')
+    )
+
+    [psobject] $tfs = [Microsoft.TeamFoundation.Client.TeamFoundationServerFactory]::GetServer($serverName)
+    foreach ($entry in $propertiesToAdd) {
+        $scriptBlock = '
+            [System.Reflection.Assembly]::LoadWithPartialName(&quot;{0}&quot;) &gt; $null
+            $this.GetService([{1}])
+        ' -f $entry[1],$entry[2]
+        $tfs | add-member scriptproperty $entry[0] $ExecutionContext.InvokeCommand.NewScriptBlock($scriptBlock)
+    }
+    return $tfs
+}
+
+#set the TFS server url
+[psobject] $tfs = get-tfs -serverName $collection
+
+$projectUri = ($tfs.CSS.ListAllProjects() | where { $_.Name -eq $project }).Uri
+
+&amp; $TFSSecurity /gc $projectUri $groupName $groupDescription /collection:$collection
+</code></pre><p>Here line 52 is the important one: it search and gets the Team Project URI, which is what the TFSSecurity tool wants.
+The rest of the code is well known and do not deserve comments.</p><div class="panel panel-info"><div class=panel-heading><h3 class=panel-title>TFS Version</h3></div><div class=panel-body>This script works with TFS 2013. You need to change the version numbers to make it work with other TFS versions.</div></div><p>To use it, copy the code in a file, e.g. <code>New-TeamProjectGroup.ps1</code> and in a Powershell prompt run something similar to this</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-PowerShell data-lang=PowerShell>New-TeamProjectGroup.ps1  -collection <span style=color:#e6db74>&#34;http://localhost:8080/tfs/DefaultCollection&#34;</span> -project MyProject -groupName <span style=color:#e6db74>&#34;My secure TFS group&#34;</span>
+</code></pre></div></p></div><div class=card-footer><small class=text-muted><i class="fas fa-folder text-primary"></i>&nbsp;
+<a href=/categories/#alm class="badge badge-primary"><span>ALM</span></a><br><i class="fas fa-tags text-secondary"></i>&nbsp;
+<a href=/tags/#tfs class="badge badge-secondary"><span>TFS</span></a>
+<a href=/tags/#tfssecurity class="badge badge-secondary"><span>TfsSecurity</span></a>
+<a href=/tags/#tfs-administration class="badge badge-secondary"><span>TFS Administration</span></a>
+<a href=/tags/#powershell class="badge badge-secondary"><span>PowerShell</span></a></small></div></div></div></main><footer class="navbar-light border-top"><div class=container><div class=row><div class="col-12 col-md-3 mb-3"><h5>Giulio Vian's Blog!</h5>Notes and considerations of small venetian guy on DevOps tools, architecture, development and other paraphernalia.</div><div class="col-12 col-md-3 mb-3"><h5>Social</h5><ul class="list-unstyled list-inline"><li class=list-inline-item><a href=https://github.com/giuliov target=_blank rel="noopener noreferrer" title=GitHub class="fab fa-github fa-2x"></a></li><li class=list-inline-item><a href=https://stackoverflow.com/users/100864 target=_blank rel="noopener noreferrer" title="Stack Overflow" class="fab fa-stack-overflow fa-2x"></a></li><li class=list-inline-item><a href=https://medium.com/@giuliovdev target=_blank rel="noopener noreferrer" title=Medium class="fab fa-medium fa-2x"></a></li><li class=list-inline-item><a href=https://linkedin.com/in/giuliovian target=_blank rel="noopener noreferrer" title=LinkedIn class="fab fa-linkedin fa-2x"></a></li><li class=list-inline-item><a href=https://linkedin.com/company/unum-ireland-ltd-it target=_blank rel="noopener noreferrer" title="LinkedIn Company" class="fab fa-linkedin fa-2x"></a></li><li class=list-inline-item><a href=https://xing.com/profile/Giulio_Vian target=_blank rel="noopener noreferrer" title=Xing class="fab fa-xing fa-2x"></a></li><li class=list-inline-item><a href=https://slideshare.net/giuliov target=_blank rel="noopener noreferrer" title=SlideShare class="fab fa-slideshare fa-2x"></a></li><li class=list-inline-item><a href=https://youtube.com/UCZ-J6JRyvz6aaJ9zCN5wpxA target=_blank rel="noopener noreferrer" title=YouTube class="fab fa-youtube fa-2x"></a></li><li class=list-inline-item><a href=https://twitter.com/giulio_vian target=_blank rel="noopener noreferrer" title=Twitter class="fab fa-twitter fa-2x"></a></li><li class=list-inline-item><a href=mailto:giulio.dev@casavian.eu title=Email class="fas fa-envelope fa-2x"></a></li></ul></div><div class="col-12 col-md-3 mb-3"><h5>Site</h5><ul class=list-unstyled><li><a href=/about/><i class="fas fa-address-card"></i>About</a></li><li><a href=/categories/><i class="fas fa-folder"></i>Categories</a></li><li><a href=/tags/><i class="fas fa-tags"></i>Tags</a></li></ul></div><div class="col-12 col-md-3 mb-3">&copy; 2020 Giulio Vian<br>Theme by <a href=https://www.spech.de target=_blank rel="noopener noreferrer">Sebastian Pech</a>.</div></div></div></footer><script src=/js/vendor.min.0497fa926ed3dc2241b91e016467480841da9749a0f7c40ed3960c3c238745e5accb5ec5e07654668e11047bbf96f95083b88dd49a845781011aba42e4f00a5d.js integrity="sha512-BJf6km7T3CJBuR4BZGdICEHal0mg98QO05YMPCOHReWsy17F4HZUZo4RBHu/lvlQg7iN1JqEV4EBGrpC5PAKXQ=="></script><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-46796059-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script></body></html>
